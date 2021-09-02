@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{354293EF-CA84-4651-AEB7-CF8D2094D958}|Default">
+  <MonoDevelop.Ide.ItemProperties.ApiMagos PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="RegistroDeMagos/Data/Inscripcion.cs">
+    <Files>
+      <File FileName="RegistroDeMagos/Pages/InscripcionForm.razor" Line="71" Column="40" />
+      <File FileName="RegistroDeMagos/Pages/Eliminar.razor" Line="30" Column="9" />
+      <File FileName="RegistroDeMagos/Data/Inscripcion.cs" Line="22" Column="19" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ApiMagos" expanded="True">
+            <Node name="RegistroDeMagos" expanded="True" selected="True">
+              <Node name="Data" expanded="True" />
+              <Node name="Pages" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/codex/Projects/ApiMagos/RegistroDeMagos/Pages/Eliminar.razor" relfile="RegistroDeMagos/Pages/Eliminar.razor" line="33" column="1" />
+      <Breakpoint file="/Users/codex/Projects/ApiMagos/RegistroDeMagos/Pages/Eliminar.razor" relfile="RegistroDeMagos/Pages/Eliminar.razor" line="23" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

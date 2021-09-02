@@ -1,0 +1,70 @@
+﻿@page "/"
+@using System.Net.Http
+@using System.Net.Http.Json
+@using Data
+@inject NavigationManager Navigation
+@inject HttpClient http
+
+<div class="row">
+    <div class="col-12 text-center">
+        <h1>Magos registrados</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 text-rigth">
+        <a href="inscripcion" class="btn btn-primary">Nueva Inscripcion</a>
+    </div> <br><br><br>
+</div>
+
+<table class="table table-bordered table - striped">
+
+    <thead>
+        <tr>
+            <td> ID </td>
+            <td> Nombre </td>
+            <td> Apellido </td>
+            <td> Identificacion </td>
+            <td> Edad</td>
+            <td> Casa </td>
+            <td> Acciones </td>
+        </tr>
+    </thead>
+    @if (oRespuesta != null && oRespuesta.Data != null)
+    {
+
+
+        @foreach (var oElement in oRespuesta.Data)
+        {
+            <tr>
+                <td>@oElement.Id</td>
+                <td>@oElement.Nombre</td>
+                <td>@oElement.Apellido</td>
+                <td>@oElement.Identificacion</td>
+                <td>@oElement.Edad</td>
+                <td>@oElement.Casa</td>
+                <td>
+                    <a href="/inscripcion/@oElement.Id" class="btn btn-warning">Editar</a>
+                    <a href="/eliminarMAgo/@oElement.Id" class="btn btn-danger">Eliminar</a>
+                   
+                </td>
+            </tr>
+        }
+
+
+
+            }
+          
+</table>
+
+@code {
+
+    public string Url = "/api/inscripcion";
+    public Data.Respuesta<List<Inscripcion>> oRespuesta = new Data.Respuesta<List<Inscripcion>>();
+  
+    protected override async Task OnInitializedAsync() =>
+    oRespuesta = await http.GetFromJsonAsync<Data.Respuesta<List<Inscripcion>>>(Url);
+
+
+
+
+}

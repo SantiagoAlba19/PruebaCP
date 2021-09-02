@@ -1,0 +1,93 @@
+﻿@page "/inscripcion"
+@page "/inscripcion/{Id:int}"
+@using Data
+@using System.Net.Http
+@using System.Net.Http.Json
+@using System.ComponentModel.DataAnnotations;
+@inject HttpClient http
+@inject NavigationManager Navigation
+<h3>
+    Formulario de inscripcion
+</h3>
+
+<EditForm Model="oInscripcion" OnSubmit="save">
+    <DataAnnotationsValidator />
+    <div class="form-group">
+        <label class="col-sm-3">Nombre</label>
+        <InputText class="form-control" @bind-Value="@oInscripcion.Nombre"></InputText>
+        <ValidationMessage For="(()=> oInscripcion.Nombre) "></ValidationMessage>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Apellido</label>
+        <InputText class="form-control" @bind-Value="@oInscripcion.Apellido"></InputText>
+        <ValidationMessage For=" (()=> oInscripcion.Apellido) "></ValidationMessage>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Identificacion</label>
+        <InputNumber class="form-control" @bind-Value="@oInscripcion.Identificacion"> </InputNumber>
+        <span asp-validation-for="identificacion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Edad</label>
+        <InputNumber class="form-control" @bind-Value="@oInscripcion.Edad"> </InputNumber>
+        <span asp-validation-for="edad" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label> Casa</label>
+        <InputSelect class="form-control" @bind-Value="@oInscripcion.Casa">
+            <option value=""></option>
+            <option value="Gryffindor">Gryffindor</option>
+            <option value="Hufflepuff">Hufflepuff</option>
+            <option value="Ravenclaw">Ravenclaw</option>
+            <option value="Slytherin">Slytherin</option>
+        </InputSelect>
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+
+        </div>
+
+    </div>
+</EditForm>
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+    private Inscripcion oInscripcion { get; set; } = new Inscripcion();
+    public string Url = "/api/inscripcion";
+    Respuesta<object> oRespuesta = new Respuesta<object>();
+    Respuesta<Inscripcion> oRespuestaInscripcion = new Respuesta<Inscripcion>();
+    private async Task save()
+    {
+        if (Id != 0)
+        {
+            var Response = await http.PutAsJsonAsync<Inscripcion>(Url, oInscripcion);
+            oRespuesta = Response.Content.ReadFromJsonAsync<Respuesta<object>>().Result;
+            Navigation.NavigateTo("/");
+        }
+        else
+        {
+            var Response = await http.PostAsJsonAsync<Inscripcion>(Url, oInscripcion);
+            oRespuesta = Response.Content.ReadFromJsonAsync<Respuesta<object>>().Result;
+            Navigation.NavigateTo("/");
+        }
+
+
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id != 0)
+        {
+            oRespuestaInscripcion = await http.GetFromJsonAsync<Data.Respuesta<Inscripcion>>(Url + "/" + Id);
+            oInscripcion = oRespuestaInscripcion.Data;
+        }
+
+    }
+
+}

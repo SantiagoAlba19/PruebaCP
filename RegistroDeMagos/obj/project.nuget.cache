@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "yzDYQRrxAJgFpbBW8zb7mO/TaQdLl2cYNokdjaSF1O57RINkuc9Zu5XWh5Q+c1Ck4FQNFezT1mj8xJ94INOWIg==",
+  "success": true,
+  "projectFilePath": "/Users/codex/Projects/ApiMagos/RegistroDeMagos/RegistroDeMagos.csproj",
+  "expectedPackageFiles": [
+    "/Users/codex/.nuget/packages/system.net.http.json/5.0.0/system.net.http.json.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
